@@ -4,7 +4,7 @@ const colors = require("colors");
 const morgan = require("morgan");
 const cors = require("cors");
 const connectDB = require("./config/db");
-const app = express()
+const app = express();
 //dot config
 dotenv.config();
 
@@ -17,6 +17,7 @@ app.use(morgan("dev"));
 
 
 app.use('/api/v1/auth', require('./routes/authRoutes'));
+app.use('/api/v1/inventory', require('./routes/inventoryRoutes'));
 //port
 const PORT =  process.env.PORT || 8080;
 

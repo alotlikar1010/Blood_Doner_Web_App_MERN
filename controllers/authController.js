@@ -54,6 +54,15 @@ const loginController = async(req, res) =>{
     }
     // compare password
 
+    
+      //check role
+      if (user.role !== req.body.role) {
+        return res.status(500).send({
+          success: false,
+          message: "role dosent match",
+        });
+      }
+
     const comparePassword = await bcrypt.compare(req.body.password , user.password)
     if(!comparePassword){
         return res.status(500).send({
@@ -63,6 +72,8 @@ const loginController = async(req, res) =>{
     }
 
     const token = jwt.sign({userId: user._id} , process.env.JWT_SECRET_KEY ,{expiresIn:"1d"})
+
+
 
     return res.status(200).send({
         sucess: true,
