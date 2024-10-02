@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
-// import { handleLogin, handleRegister } from "../../../services/authService";
+import { handleLogin, handleRegister } from "../../../services/authSetvice";
 
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
@@ -16,23 +16,23 @@ const Form = ({ formType, submitBtn, formTitle }) => {
   return (
     <div>
       <form
-        // onSubmit={(e) => {
-        //   if (formType === "login")
-        //     return handleLogin(e, email, password, role);
-        //   else if (formType === "register")
-        //     return handleRegister(
-        //       e,
-        //       name,
-        //       role,
-        //       email,
-        //       password,
-        //       phone,
-        //       organisationName,
-        //       address,
-        //       hospitalName,
-        //       website
-        //     );
-        // }}
+        onSubmit={(e) => {
+          if (formType === "login")
+            return handleLogin(e, email, password, role);
+          else if (formType === "register")
+            return handleRegister(
+              e,
+              name,
+              role,
+              email,
+              password,
+              phone,
+              organisationName,
+              address,
+              hospitalName,
+              website
+            );
+        }}
       >
         <h1 className="text-center">{formTitle}</h1>
         <hr />
@@ -170,7 +170,7 @@ onChange={(e) => setRole(e.target.value)} // Update role state on change
             </p>
           ) : (
             <p>
-              ALready User Please
+              Existing User Please 
               <Link to="/login"> Login !</Link>
             </p>
           )}

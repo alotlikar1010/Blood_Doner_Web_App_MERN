@@ -5,12 +5,12 @@ const InputType = ({labelFor ,labelText ,inputType ,value,onChange ,name}) => {
     <>
      <div className='mb-3'>
         
-     <div class="mb-3">
-                <label htmlfor={labelFor} class="form-label">
+     <div className="mb-3">
+                <label htmlFor={labelFor} className="form-label">
                     {labelText}
                 </label>
                 <input 
-                class="form-control"
+                className="form-control"
                 id="inputEmail4"
                 type={inputType}
                  value={value}
