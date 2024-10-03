@@ -2,7 +2,7 @@ import React from "react";
 // import { userMenu } from "./Menus/userMenu";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-// import "../../../styles/Layout.css";
+import "../../../styles/Layout.css";
 
 const Sidebar = () => {
   //GET USER STATE
@@ -24,7 +24,7 @@ const Sidebar = () => {
               </div>
               <div
                 className={`menu-item ${
-                  location.pathname === "/doner" && "active"
+                  location.pathname === "/donar" && "active"
                 }`}
               >
                 <i className="fa-solid fa-hand-holding-medical"></i>

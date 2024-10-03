@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import InputType from "./InputType";
 import { Link } from "react-router-dom";
-import { handleLogin, handleRegister } from "../../../services/authSetvice";
+import { handleLogin, handleRegister } from "../../../services/authService";
 
 const Form = ({ formType, submitBtn, formTitle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("doner");
+  const [role, setRole] = useState("donar");
   const [name, setName] = useState("");
   const [organisationName, setOrganisationName] = useState("");
   const [hospitalName, setHospitalName] = useState("");
@@ -36,10 +36,64 @@ const Form = ({ formType, submitBtn, formTitle }) => {
       >
         <h1 className="text-center">{formTitle}</h1>
         <hr />
-  
+        <div className="d-flex mb-3">
+          <div className="form-check">
+            <input
+              type="radio"
+              className="form-check-input"
+              name="role"
+              id="donarRadio"
+              value={"donar"}
+              onChange={(e) => setRole(e.target.value)}
+              defaultChecked
+            />
+            <label htmlFor="adminRadio" className="form-check-label">
+              Donar
+            </label>
+          </div>
+          <div className="form-check ms-2">
+            <input
+              type="radio"
+              className="form-check-input"
+              name="role"
+              id="adminRadio"
+              value={"admin"}
+              onChange={(e) => setRole(e.target.value)}
+            />
+            <label htmlFor="adminRadio" className="form-check-label">
+              Admin
+            </label>
+          </div>
+          <div className="form-check ms-2">
+            <input
+              type="radio"
+              className="form-check-input"
+              name="role"
+              id="hospitalRadio"
+              value={"hospital"}
+              onChange={(e) => setRole(e.target.value)}
+            />
+            <label htmlFor="hospitalRadio" className="form-check-label">
+              Hospital
+            </label>
+          </div>
+          <div className="form-check ms-2">
+            <input
+              type="radio"
+              className="form-check-input"
+              name="role"
+              id="organisationRadio"
+              value={"organisation"}
+              onChange={(e) => setRole(e.target.value)}
+            />
+            <label htmlFor="organisationRadio" className="form-check-label">
+              Organisation
+            </label>
+          </div>
+        </div>
         {/* switch statement */}
         {(() => {
-        
+          //eslint-disable-next-line
           switch (true) {
             case formType === "login": {
               return (
@@ -66,7 +120,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             case formType === "register": {
               return (
                 <>
-                  {(role === "admin" || role === "doner") && (
+                  {(role === "admin" || role === "donar") && (
                     <InputType
                       labelText={"Name"}
                       labelFor={"forName"}
@@ -76,7 +130,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   )}
-                  {role === "ORG" && (
+                  {role === "organisation" && (
                     <InputType
                       labelText={"Organisation Name"}
                       labelFor={"fororganisationName"}
@@ -86,7 +140,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       onChange={(e) => setOrganisationName(e.target.value)}
                     />
                   )}
-                  {role === "HOS" && (
+                  {role === "hospital" && (
                     <InputType
                       labelText={"Hospital Name"}
                       labelFor={"forHospitalName"}
@@ -143,25 +197,6 @@ const Form = ({ formType, submitBtn, formTitle }) => {
           }
         })()}
 
-<div className="d-flex mb-3">
-
-<div className="form-group">
-<label htmlFor="roleSelect" className="form-label">
-Select Role
-</label>
-<select
-className="form-select"
-id="roleSelect"
-value={role} // Bind the selected value to role state
-onChange={(e) => setRole(e.target.value)} // Update role state on change
->
-<option value="doner">Doner</option>
-<option value="admin">Admin</option>
-<option value="HOS">Hospital</option>
-<option value="ORG">Organisation</option>
-</select>
-</div>
-</div>
         <div className="d-flex flex-row justify-content-between">
           {formType === "login" ? (
             <p>
@@ -170,7 +205,7 @@ onChange={(e) => setRole(e.target.value)} // Update role state on change
             </p>
           ) : (
             <p>
-              Existing User Please 
+              ALready Usser Please
               <Link to="/login"> Login !</Link>
             </p>
           )}
