@@ -11,7 +11,7 @@ const InputType = ({labelFor ,labelText ,inputType ,value,onChange ,name}) => {
                 </label>
                 <input 
                 className="form-control"
-                id="inputEmail4"
+              
                 type={inputType}
                  value={value}
                  name={name}

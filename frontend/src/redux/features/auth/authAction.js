@@ -8,14 +8,16 @@ export const userLogin = createAsyncThunk(
     async ({ role, email, password }, { rejectWithValue }) => {
       try {
   
-        const { data } = await API.post("/auth/login", { role, email, password });
+        const {data}= await API.post("/auth/login", { role, email, password });
         
         //store token
         if (data.success) {
+         
           alert(data.message);
           localStorage.setItem("token", data.token);
           window.location.replace("/");
         }
+        
         return data;
       } catch (error) {
         if (error.response && error.response.data.message) {
@@ -77,12 +79,12 @@ export const getCurrentUser = createAsyncThunk(
     'auth/getCurrentUser',
     async({rejectWithValue}) => {
         try{
-          const {res} = await API.post("/auth/current-user", )
+          const res= await API.post("/auth/current-user")
         // store token
 
-        if (res?.data){
+        if (res.data){
             
-           return res?.data
+           return res?.data;
         }
      
         }

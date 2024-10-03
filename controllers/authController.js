@@ -58,7 +58,7 @@ const loginController = async(req, res) =>{
       //check role
       if (user.role !== req.body.role) {
         return res.status(500).send({
-          success: false,
+            success: false,
           message: "role dosent match",
         });
       }
@@ -76,7 +76,7 @@ const loginController = async(req, res) =>{
 
 
     return res.status(200).send({
-        sucess: true,
+        success: true,
         message: "Login Successful",
         token, user
     })
