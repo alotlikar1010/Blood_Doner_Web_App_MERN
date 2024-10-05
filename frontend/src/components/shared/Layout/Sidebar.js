@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div>
       <div className="sidebar">
         <div className="menu">
-          {user?.role === "organisation" && (
+          {user?.role === "ORG" && (
             <>
               <div
                 className={`menu-item ${location.pathname === "/" && "active"}`}
@@ -68,7 +68,7 @@ const Sidebar = () => {
               </div>
             </>
           )}
-          {(user?.role === "donar" || user?.role === "hospital") && (
+          {(user?.role === "doner" || user?.role === "HOS") && (
             <div
               className={`menu-item ${
                 location.pathname === "/orgnaisation" && "active"
@@ -78,7 +78,7 @@ const Sidebar = () => {
               <Link to="/orgnaisation">Orgnaisation</Link>
             </div>
           )}
-          {user?.role === "hospital" && (
+          {user?.role === "HOS" && (
             <div
               className={`menu-item ${
                 location.pathname === "/consumer" && "active"
@@ -88,7 +88,7 @@ const Sidebar = () => {
               <Link to="/consumer">Consumer</Link>
             </div>
           )}
-          {user?.role === "donar" && (
+          {user?.role === "doner" && (
             <div
               className={`menu-item ${
                 location.pathname === "/donation" && "active"

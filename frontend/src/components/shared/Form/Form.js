@@ -43,7 +43,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               className="form-check-input"
               name="role"
               id="donarRadio"
-              value={"donar"}
+              value={"doner"}
               onChange={(e) => setRole(e.target.value)}
               defaultChecked
             />
@@ -70,7 +70,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               className="form-check-input"
               name="role"
               id="hospitalRadio"
-              value={"hospital"}
+              value={"HOS"}
               onChange={(e) => setRole(e.target.value)}
             />
             <label htmlFor="hospitalRadio" className="form-check-label">
@@ -83,7 +83,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
               className="form-check-input"
               name="role"
               id="organisationRadio"
-              value={"organisation"}
+              value={"ORG"}
               onChange={(e) => setRole(e.target.value)}
             />
             <label htmlFor="organisationRadio" className="form-check-label">
@@ -120,7 +120,7 @@ const Form = ({ formType, submitBtn, formTitle }) => {
             case formType === "register": {
               return (
                 <>
-                  {(role === "admin" || role === "donar") && (
+                  {(role === "admin" || role === "doner") && (
                     <InputType
                       labelText={"Name"}
                       labelFor={"forName"}
@@ -130,17 +130,17 @@ const Form = ({ formType, submitBtn, formTitle }) => {
                       onChange={(e) => setName(e.target.value)}
                     />
                   )}
-                  {role === "organisation" && (
+                  {role === "ORG" && (
                     <InputType
                       labelText={"Organisation Name"}
                       labelFor={"fororganisationName"}
                       inputType={"text"}
-                      name={"organisationName"}
+                      name={"ORG"}
                       value={organisationName}
                       onChange={(e) => setOrganisationName(e.target.value)}
                     />
                   )}
-                  {role === "hospital" && (
+                  {role === "HOS" && (
                     <InputType
                       labelText={"Hospital Name"}
                       labelFor={"forHospitalName"}
